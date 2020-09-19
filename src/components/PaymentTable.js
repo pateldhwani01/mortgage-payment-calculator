@@ -9,6 +9,8 @@ export class PaymentTable extends React.Component {
 		let outstandingBalance = this.props.amountToBorrow;
 		let interestPaid = 0;
 		let capitalRepaid = 0;
+		let year = 0;
+		let yearInterestPaid = 0;
 
 		for(let i = 1; i <= this.props.mortgageTerm * 12; i++) {
 
@@ -17,16 +19,24 @@ export class PaymentTable extends React.Component {
 			outstandingBalance = outstandingBalance - (this.props.monthlyPayment - interestPaid);
 			capitalRepaid = capitalRepaid + (this.props.monthlyPayment - interestPaid);
 
-			paymentMonthsArr.push(
-				<tr key={month}>
-					<td>{month}</td>
-					<td>£{this.props.numberWithCommas(outstandingBalance.toFixed(2))}</td>
-					<td>£{this.props.numberWithCommas(interestPaid.toFixed(2))}</td>
-					<td>£{this.props.numberWithCommas(capitalRepaid.toFixed(2))}</td>
-				</tr>
-			);
+			yearInterestPaid = yearInterestPaid + interestPaid;
+
+			if (i % 12 == 0) {
+				year++;
+				paymentMonthsArr.push(
+					<tr key={year}>
+						<td>{year}</td>
+						<td>£{this.props.numberWithCommas(outstandingBalance.toFixed(2))}</td>
+						<td>£{this.props.numberWithCommas(yearInterestPaid.toFixed(2))}</td>
+						<td>£{this.props.numberWithCommas(capitalRepaid.toFixed(2))}</td>
+					</tr>
+				);
+				yearInterestPaid = 0;
+			}
+
+			
 		}
-		
+
 		return (
 			<table className="paymentsCalculatorTable">
 				<thead>
