@@ -4,10 +4,7 @@ export class CalculatorControls extends React.Component {
 	render() {
 		return (
 			<div className="calculator-controls__container">
-				<div>
-					<label htmlFor="depositAmount">Deposit: £</label>
-					<input id="depositAmount" type="number" defaultValue="72000" />
-				</div>
+				
 
 				<div>
 					<label htmlFor="purchasingHousePrice">Purchasing House Price: £</label>
@@ -27,8 +24,27 @@ export class CalculatorControls extends React.Component {
 				</div>
 
 				<div>
+					<label htmlFor="points">Deposit:</label>
+					<input 
+						type="range" 
+						id="depositAmount" 
+						name="points" 
+						min="1000" 
+						max="100000" 
+						step="1000" 
+						defaultValue="72000" 
+						onChange={() => this.props.updateValues(
+							document.getElementById('depositAmount').value, 
+							document.getElementById('purchasingHousePrice').value, 
+							document.getElementById('mortgageTerm').value, 
+							document.getElementById('interestRate').value)} />
+					<span>£{this.props.numberWithCommas(this.props.depositAmount)}</span>
+
+				</div>		
+
+				<div>
 					<button 
-						onClick={() => this.props.handleClick(
+						onClick={() => this.props.updateValues(
 							document.getElementById('depositAmount').value, 
 							document.getElementById('purchasingHousePrice').value, 
 							document.getElementById('mortgageTerm').value, 
