@@ -14,14 +14,14 @@ export class PaymentTable extends React.Component {
 
 		for(let i = 1; i <= this.props.mortgageTerm * 12; i++) {
 
-			let month = i;
+			
 			interestPaid = outstandingBalance * this.props.interestRate / 100 / 12;
 			outstandingBalance = outstandingBalance - (this.props.monthlyPayment - interestPaid);
 			capitalRepaid = capitalRepaid + (this.props.monthlyPayment - interestPaid);
 
 			yearInterestPaid = yearInterestPaid + interestPaid;
 
-			if (i % 12 == 0) {
+			if (i % 12 === 0) {
 				year++;
 				paymentMonthsArr.push(
 					<tr key={year}>
