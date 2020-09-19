@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.calculator-controls__container {
+  display: flex;
+  flex-direction: column;
+}
+.calculator-controls__container input {
+  max-width: 400px;
+  margin: auto;
+}
