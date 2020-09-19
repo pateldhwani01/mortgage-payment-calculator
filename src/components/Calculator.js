@@ -38,13 +38,17 @@ export class Calculator extends React.Component {
 		});
 	}
 
+	numberWithCommas(x) {
+    	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
 	render() {
 		return (
 			<div>
-				<h3>Amount to borrow: £{this.state.amountToBorrow}</h3>
-				<h1>Monthly Payment: £{this.state.monthlyPayment}</h1>
-				<h3>Total repaid: £{this.state.totalRepaid}</h3>
-				<h3>Total interest paid: £{this.state.totalInterestPaid}</h3>
+				<h3>Amount to borrow: £{this.numberWithCommas(this.state.amountToBorrow)}</h3>
+				<h1>Monthly Payment: £{this.numberWithCommas(this.state.monthlyPayment)}</h1>
+				<h3>Total repaid: £{this.numberWithCommas(this.state.totalRepaid)}</h3>
+				<h3>Total interest paid: £{this.numberWithCommas(this.state.totalInterestPaid)}</h3>
 				<CalculatorControls 
 					handleClick={this.handleClick} 
 				/>
