@@ -50,7 +50,7 @@ export class Calculator extends React.Component {
 						<span className="grid__item--header">
 							£{this.numberWithCommas(parseInt(this.state.amountToBorrow))}
 						</span>
-						<div className="grid__item--label">Amount to borrow</div>
+						<div className="grid__item--label">Amount To Borrow</div>
 					</div>
 					<div className="grid__item">
 						<span className="grid__item--header">
@@ -62,13 +62,13 @@ export class Calculator extends React.Component {
 						<span className="grid__item--header">
 							£{this.numberWithCommas(parseInt(this.state.totalRepaid))}
 						</span>
-						<div className="grid__item--label">Total repaid</div>
+						<div className="grid__item--label">Total Repaid</div>
 					</div>
 					<div className="grid__item">
 						<span className="grid__item--header">
 							£{this.numberWithCommas(parseInt(this.state.totalInterestPaid))}
 						</span>
-						<div className="grid__item--label">Total interest paid</div>
+						<div className="grid__item--label">Total Interest Paid</div>
 					</div>
 				</div>
 				<CalculatorControls 
