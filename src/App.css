@@ -23,3 +23,10 @@ h1 {
   font-style: italic;
   font-size: .8em;
 }
+.paymentsCalculatorTable {
+  width: 100%;
+}
+.paymentsCalculatorTable td {
+  width: 25%;
+  text-align: center;
+}

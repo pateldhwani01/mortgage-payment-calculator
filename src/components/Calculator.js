@@ -1,5 +1,6 @@
 import React from 'react';
 import {CalculatorControls} from './CalculatorControls';
+import {PaymentTable} from './PaymentTable';
 
 export class Calculator extends React.Component {
 	constructor(props) {
@@ -78,7 +79,14 @@ export class Calculator extends React.Component {
 					purchasingHousePrice={this.state.purchasingHousePrice}
 					mortgageTerm={this.state.mortgageTerm}
 					interestRate={this.state.interestRate}
-				/>	
+				/>
+				<PaymentTable
+					mortgageTerm={this.state.mortgageTerm}
+					amountToBorrow={this.state.amountToBorrow}
+					interestRate={this.state.interestRate}
+					monthlyPayment={this.state.monthlyPayment}
+					numberWithCommas={this.numberWithCommas}
+				/>
 			</div>
 		);
 	}
