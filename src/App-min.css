@@ -1,0 +1,1 @@
+h1{text-align:center}.grid__container{display:grid;grid-template-columns:50% 50%}.grid__item{padding:30px;display:flex;flex-direction:column;text-align:center}.grid__item--header{font-weight:bold;font-size:1.2em;margin-bottom:10px}.grid__item--range-slider{margin-bottom:10px}.grid__item--label{font-style:italic;font-size:.8em}

@@ -9,13 +9,13 @@ export class Calculator extends React.Component {
 
 		this.state = {
 			depositAmount: 72000,
-			purchasingHousePrice: 0,
-			amountToBorrow: 0,
-			mortgageTerm: 0,
-			interestRate: 0,
-			monthlyPayment: 0,
-			totalRepaid: 0,
-			totalInterestPaid: 0,
+			purchasingHousePrice: 285000,
+			amountToBorrow: 213000,
+			mortgageTerm: 25,
+			interestRate: 1.8,
+			monthlyPayment: 882,
+			totalRepaid: 264663,
+			totalInterestPaid: 51663,
 		}
 	}
 
@@ -45,15 +45,40 @@ export class Calculator extends React.Component {
 	render() {
 		return (
 			<div>
-				<h3>Amount to borrow: £{this.numberWithCommas(parseInt(this.state.amountToBorrow))}</h3>
-				<h1>Monthly Payment: £{this.numberWithCommas(parseInt(this.state.monthlyPayment))}</h1>
-				<h3>Total repaid: £{this.numberWithCommas(parseInt(this.state.totalRepaid))}</h3>
-				<h3>Total interest paid: £{this.numberWithCommas(parseInt(this.state.totalInterestPaid))}</h3>
+				<div className="grid__container">
+					<div className="grid__item">
+						<span className="grid__item--header">
+							£{this.numberWithCommas(parseInt(this.state.amountToBorrow))}
+						</span>
+						<div className="grid__item--label">Amount to borrow</div>
+					</div>
+					<div className="grid__item">
+						<span className="grid__item--header">
+							£{this.numberWithCommas(parseInt(this.state.monthlyPayment))}
+						</span>
+						<div className="grid__item--label">Monthly Payment</div>
+					</div>
+					<div className="grid__item">
+						<span className="grid__item--header">
+							£{this.numberWithCommas(parseInt(this.state.totalRepaid))}
+						</span>
+						<div className="grid__item--label">Total repaid</div>
+					</div>
+					<div className="grid__item">
+						<span className="grid__item--header">
+							£{this.numberWithCommas(parseInt(this.state.totalInterestPaid))}
+						</span>
+						<div className="grid__item--label">Total interest paid</div>
+					</div>
+				</div>
 				<CalculatorControls 
 					updateValues={this.updateValues} 
-					depositAmount={this.state.depositAmount}
 					numberWithCommas={this.numberWithCommas}
-				/>
+					depositAmount={this.state.depositAmount}
+					purchasingHousePrice={this.state.purchasingHousePrice}
+					mortgageTerm={this.state.mortgageTerm}
+					interestRate={this.state.interestRate}
+				/>	
 			</div>
 		);
 	}

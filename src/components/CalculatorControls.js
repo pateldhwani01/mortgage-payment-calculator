@@ -3,32 +3,70 @@ import React from 'react';
 export class CalculatorControls extends React.Component {
 	render() {
 		return (
-			<div className="calculator-controls__container">
+			<div className="grid__container">			
+
+				<div className="grid__item">
+					<span className="grid__item--header">£{this.props.numberWithCommas(this.props.purchasingHousePrice)}</span>
+					<input 
+						type="range"
+						className="grid__item--range-slider"
+						id="purchasingHousePrice"  
+						min="50000" 
+						max="500000" 
+						step="1000" 
+						defaultValue="285000" 
+						onChange={() => this.props.updateValues(
+							document.getElementById('depositAmount').value, 
+							document.getElementById('purchasingHousePrice').value, 
+							document.getElementById('mortgageTerm').value, 
+							document.getElementById('interestRate').value)} />
+					<label className="grid__item--label" htmlFor="purchasingHousePrice">Purchasing House Price</label>
+				</div>
+
 				
 
-				<div>
-					<label htmlFor="purchasingHousePrice">Purchasing House Price: £</label>
-					<input id="purchasingHousePrice" type="number" defaultValue="285000" />
-				</div>
-
-				<div>
-					<label htmlFor="mortgageTerm">Mortgage Term: </label>
-					<input id="mortgageTerm" type="number" defaultValue="25" />
-					<span> Years</span>
-				</div>
-
-				<div>
-					<label htmlFor="interestRate">Interest Rate: </label>
-					<input id="interestRate" type="number" defaultValue="1.8" />
-					<span>%</span>
-				</div>
-
-				<div>
-					<label htmlFor="points">Deposit:</label>
+				<div className="grid__item">
+					<span className="grid__item--header">{this.props.numberWithCommas(this.props.mortgageTerm)} Years</span>
 					<input 
-						type="range" 
+						type="range"
+						className="grid__item--range-slider"
+						id="mortgageTerm"  
+						min="15" 
+						max="35" 
+						step="1" 
+						defaultValue="25" 
+						onChange={() => this.props.updateValues(
+							document.getElementById('depositAmount').value, 
+							document.getElementById('purchasingHousePrice').value, 
+							document.getElementById('mortgageTerm').value, 
+							document.getElementById('interestRate').value)} />
+					<label className="grid__item--label" htmlFor="mortgageTerm">Mortgage Term</label>
+				</div>
+
+				<div className="grid__item">
+					<span className="grid__item--header">{this.props.numberWithCommas(this.props.interestRate)}%</span>
+					<input 
+						type="range"
+						className="grid__item--range-slider"
+						id="interestRate"  
+						min="0.1" 
+						max="8" 
+						step="0.1" 
+						defaultValue="1.8" 
+						onChange={() => this.props.updateValues(
+							document.getElementById('depositAmount').value, 
+							document.getElementById('purchasingHousePrice').value, 
+							document.getElementById('mortgageTerm').value, 
+							document.getElementById('interestRate').value)} />
+					<label className="grid__item--label" htmlFor="interestRate">Interest Rate</label>
+				</div>
+
+				<div className="grid__item">
+					<span className="grid__item--header">£{this.props.numberWithCommas(this.props.depositAmount)}</span>
+					<input 
+						type="range"
+						className="grid__item--range-slider"
 						id="depositAmount" 
-						name="points" 
 						min="1000" 
 						max="100000" 
 						step="1000" 
@@ -38,20 +76,9 @@ export class CalculatorControls extends React.Component {
 							document.getElementById('purchasingHousePrice').value, 
 							document.getElementById('mortgageTerm').value, 
 							document.getElementById('interestRate').value)} />
-					<span>£{this.props.numberWithCommas(this.props.depositAmount)}</span>
-
+					<label className="grid__item--label" htmlFor="points">Deposit</label>
 				</div>		
 
-				<div>
-					<button 
-						onClick={() => this.props.updateValues(
-							document.getElementById('depositAmount').value, 
-							document.getElementById('purchasingHousePrice').value, 
-							document.getElementById('mortgageTerm').value, 
-							document.getElementById('interestRate').value)} >
-						Calculate
-					</button>
-				</div>
 			</div>
 		);
 	}
