@@ -26,10 +26,15 @@ h1 {
 .paymentsCalculatorTable {
   width: 100%;
 }
+.paymentsCalculatorTable thead th {
+  position: sticky;
+  top: 0;
+  background: white;
+}
 .paymentsCalculatorTable td, .paymentsCalculatorTable th {
   padding: 15px 5px;
 }
-.paymentsCalculatorTable tr:nth-of-type(odd) {
+.paymentsCalculatorTable tr:nth-of-type(even) {
   background-color: rgba(0,0,0,.05);
 }
 .paymentsCalculatorTable td {
