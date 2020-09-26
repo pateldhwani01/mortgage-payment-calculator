@@ -15,10 +15,10 @@ export class CalculatorControls extends React.Component {
 						step="1000" 
 						defaultValue="285000" 
 						onChange={() => this.props.updateValues(
-							document.getElementById('depositAmount').value, 
-							document.getElementById('purchasingHousePrice').value, 
-							document.getElementById('mortgageTerm').value, 
-							document.getElementById('interestRate').value)} />
+							parseInt(document.getElementById('depositAmount').value), 
+							parseInt(document.getElementById('purchasingHousePrice').value), 
+							parseInt(document.getElementById('mortgageTerm').value), 
+							parseInt(document.getElementById('interestRate').value))} />
 					<label className="grid__item--label" htmlFor="purchasingHousePrice">Purchasing House Price</label>
 				</div>
 				<div className="grid__item">
@@ -32,10 +32,10 @@ export class CalculatorControls extends React.Component {
 						step="1000" 
 						defaultValue="72000" 
 						onChange={() => this.props.updateValues(
-							document.getElementById('depositAmount').value, 
-							document.getElementById('purchasingHousePrice').value, 
-							document.getElementById('mortgageTerm').value, 
-							document.getElementById('interestRate').value)} />
+							parseInt(document.getElementById('depositAmount').value), 
+							parseInt(document.getElementById('purchasingHousePrice').value), 
+							parseInt(document.getElementById('mortgageTerm').value), 
+							parseInt(document.getElementById('interestRate').value))} />
 					<label className="grid__item--label" htmlFor="points">Deposit</label>
 				</div>
 				<div className="grid__item">
@@ -49,10 +49,10 @@ export class CalculatorControls extends React.Component {
 						step="1" 
 						defaultValue="25" 
 						onChange={() => this.props.updateValues(
-							document.getElementById('depositAmount').value, 
-							document.getElementById('purchasingHousePrice').value, 
-							document.getElementById('mortgageTerm').value, 
-							document.getElementById('interestRate').value)} />
+							parseInt(document.getElementById('depositAmount').value), 
+							parseInt(document.getElementById('purchasingHousePrice').value), 
+							parseInt(document.getElementById('mortgageTerm').value), 
+							parseInt(document.getElementById('interestRate').value))} />
 					<label className="grid__item--label" htmlFor="mortgageTerm">Mortgage Term</label>
 				</div>
 				<div className="grid__item">
@@ -66,10 +66,10 @@ export class CalculatorControls extends React.Component {
 						step="0.1" 
 						defaultValue="1.8" 
 						onChange={() => this.props.updateValues(
-							document.getElementById('depositAmount').value, 
-							document.getElementById('purchasingHousePrice').value, 
-							document.getElementById('mortgageTerm').value, 
-							document.getElementById('interestRate').value)} />
+							parseInt(document.getElementById('depositAmount').value), 
+							parseInt(document.getElementById('purchasingHousePrice').value), 
+							parseInt(document.getElementById('mortgageTerm').value), 
+							parseInt(document.getElementById('interestRate').value))} />
 					<label className="grid__item--label" htmlFor="interestRate">Interest Rate</label>
 				</div>
 			</div>
