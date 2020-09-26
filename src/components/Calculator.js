@@ -33,6 +33,8 @@ export class Calculator extends React.Component {
 		//Set initial values for loop to calculate yearly figures
 		let yearDataObject = [];
 		let outstandingBalance = amountToBorrow;
+		let interestPaidToDate = 0;
+		let capitalRepaidToDate = 0;
 
 		//Loop each year of the mortgage term
 		for(let i = 1; i <= mortgageTerm; i++) {
@@ -41,7 +43,6 @@ export class Calculator extends React.Component {
 			let interestPaidMonthlyToYearlyIncrementer = 0;
 			let monthCapitalPaid = 0;
 			let monthlyCapitalRepaidToYearlyIncrementer = 0;
-			
 
 			//loop each month of the year as interest is calculated monthly
 			for (let j = 0; j < 12; j++) {
@@ -52,6 +53,9 @@ export class Calculator extends React.Component {
 				outstandingBalance = outstandingBalance - monthCapitalPaid;
 			}
 
+			interestPaidToDate = interestPaidToDate + interestPaidMonthlyToYearlyIncrementer;
+			capitalRepaidToDate = capitalRepaidToDate + monthlyCapitalRepaidToYearlyIncrementer;
+
 			//There's always around £10 left at the end which forces the fraph to go into minus. This just rounds the last figure off at £0.00.
 			if (i === mortgageTerm) {
 				outstandingBalance = 0;
@@ -61,7 +65,9 @@ export class Calculator extends React.Component {
 				year: i,
 				outstandingBalance: outstandingBalance,
 				interestPaid: interestPaidMonthlyToYearlyIncrementer,
-				capitalRepaid: monthlyCapitalRepaidToYearlyIncrementer
+				interestPaidToDate: interestPaidToDate,
+				capitalRepaid: monthlyCapitalRepaidToYearlyIncrementer,
+				capitalRepaidToDate: capitalRepaidToDate
 			});	
 		}
 
