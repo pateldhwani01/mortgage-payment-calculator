@@ -14,7 +14,6 @@ export class PaymentTable extends React.Component {
 
 		for(let i = 1; i <= this.props.mortgageTerm * 12; i++) {
 
-			
 			interestPaid = outstandingBalance * this.props.interestRate / 100 / 12;
 			outstandingBalance = outstandingBalance - (this.props.monthlyPayment - interestPaid);
 			capitalRepaid = capitalRepaid + (this.props.monthlyPayment - interestPaid);
@@ -32,16 +31,14 @@ export class PaymentTable extends React.Component {
 					</tr>
 				);
 				yearInterestPaid = 0;
-			}
-
-			
+			}	
 		}
 
 		return (
 			<table className="paymentsCalculatorTable">
 				<thead>
 					<tr>
-						<th>Month</th>
+						<th>Year</th>
 						<th>Mortgage Balance</th>
 						<th>Interest Paid</th>
 						<th>Capital Repaid</th>

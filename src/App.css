@@ -41,3 +41,9 @@ h1 {
   width: 25%;
   text-align: center;
 }
+
+.graph-container {
+  max-width: 800px;
+  margin: auto;
+  display: block;
+}
