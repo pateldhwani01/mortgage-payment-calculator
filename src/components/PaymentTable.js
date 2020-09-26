@@ -1,4 +1,10 @@
 import React from 'react';
+const localeOptions = {
+	style:'currency',
+	currency:'GBP',
+	minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+}
 
 export class PaymentTable extends React.Component {
 	render() {
@@ -9,9 +15,9 @@ export class PaymentTable extends React.Component {
 			paymentMonthsArr.push(
 				<tr key={this.props.yearlyPayments[i].year}>
 					<td>{this.props.yearlyPayments[i].year}</td>
-					<td>£{this.props.numberWithCommas(this.props.yearlyPayments[i].interestPaid.toFixed(2))}</td>
-					<td>£{this.props.numberWithCommas(this.props.yearlyPayments[i].capitalRepaid.toFixed(2))}</td>
-					<td>£{this.props.numberWithCommas(this.props.yearlyPayments[i].outstandingBalance.toFixed(2))}</td>
+					<td>{this.props.yearlyPayments[i].interestPaid.toLocaleString('en-GB', localeOptions)}</td>
+					<td>{this.props.yearlyPayments[i].capitalRepaid.toLocaleString('en-GB', localeOptions)}</td>
+					<td>{this.props.yearlyPayments[i].outstandingBalance.toLocaleString('en-GB', localeOptions)}</td>
 				</tr>
 			);
 		}
@@ -29,9 +35,9 @@ export class PaymentTable extends React.Component {
 				<tbody>
 					<tr key="0">
 						<td>Start Of Term</td>
-						<td>£{this.props.numberWithCommas('0.00')}</td>
-						<td>£{this.props.numberWithCommas('0.00')}</td>
-						<td>£{this.props.numberWithCommas(this.props.amountToBorrow)}</td>
+						<td>£0.00</td>
+						<td>£0.00</td>
+						<td>{this.props.amountToBorrow.toLocaleString('en-GB', localeOptions)}</td>
 					</tr>
 					{paymentMonthsArr}	
 				</tbody>

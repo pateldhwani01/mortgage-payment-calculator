@@ -85,10 +85,6 @@ export class Calculator extends React.Component {
 		});
 	}
 
-	numberWithCommas(x) {
-    	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
-
 	UNSAFE_componentWillMount() {
 		this.updateValues(this.state.depositAmount, this.state.purchasingHousePrice, this.state.mortgageTerm, this.state.interestRate);
 	}
@@ -101,11 +97,9 @@ export class Calculator extends React.Component {
 					monthlyPayment={this.state.monthlyPayment}
 					totalRepaid={this.state.totalRepaid}
 					totalInterestPaid={this.state.totalInterestPaid}
-					numberWithCommas={this.numberWithCommas}
 				/>
 				<CalculatorControls 
 					updateValues={this.updateValues} 
-					numberWithCommas={this.numberWithCommas}
 					depositAmount={this.state.depositAmount}
 					purchasingHousePrice={this.state.purchasingHousePrice}
 					mortgageTerm={this.state.mortgageTerm}
@@ -117,7 +111,6 @@ export class Calculator extends React.Component {
 				/>
 				<PaymentTable
 					amountToBorrow={this.state.amountToBorrow}
-					numberWithCommas={this.numberWithCommas}
 					yearlyPayments={this.state.yearlyPayments}
 				/>
 			</div>

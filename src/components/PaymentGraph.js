@@ -69,6 +69,17 @@ const graphData = {
     },
   ]
 };
+const graphOption = {
+	scales: {
+       	yAxes: [{
+        	ticks: {
+           		callback: function(value, index, values) {
+             		return value.toLocaleString('en-GB', {style:'currency', currency:'GBP'});
+           		}
+         	}
+       	}]
+    }
+}
 
 export class PaymentGraph extends React.Component {
 	render() {
@@ -86,6 +97,7 @@ export class PaymentGraph extends React.Component {
     		<div className="graph-container">
     			<Line 
     				data={graphData}
+    				options={graphOption}
     			/>
     		</div>
     	)

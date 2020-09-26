@@ -1,11 +1,18 @@
 import React from 'react';
 
+const localeOptions = {
+	style:'currency',
+	currency:'GBP',
+	minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+}
+
 export class CalculatorControls extends React.Component {
 	render() {
 		return (
 			<div className="grid__container">			
 				<div className="grid__item">
-					<span className="grid__item--header">£{this.props.numberWithCommas(this.props.purchasingHousePrice)}</span>
+					<span className="grid__item--header">{this.props.purchasingHousePrice.toLocaleString('en-GB', localeOptions)}</span>
 					<input 
 						type="range"
 						className="grid__item--range-slider"
@@ -22,7 +29,7 @@ export class CalculatorControls extends React.Component {
 					<label className="grid__item--label" htmlFor="purchasingHousePrice">Purchasing House Price</label>
 				</div>
 				<div className="grid__item">
-					<span className="grid__item--header">£{this.props.numberWithCommas(this.props.depositAmount)}</span>
+					<span className="grid__item--header">{this.props.depositAmount.toLocaleString('en-GB', localeOptions)}</span>
 					<input 
 						type="range"
 						className="grid__item--range-slider"
@@ -39,7 +46,7 @@ export class CalculatorControls extends React.Component {
 					<label className="grid__item--label" htmlFor="points">Deposit</label>
 				</div>
 				<div className="grid__item">
-					<span className="grid__item--header">{this.props.numberWithCommas(this.props.mortgageTerm)} Years</span>
+					<span className="grid__item--header">{this.props.mortgageTerm} Years</span>
 					<input 
 						type="range"
 						className="grid__item--range-slider"
@@ -56,7 +63,7 @@ export class CalculatorControls extends React.Component {
 					<label className="grid__item--label" htmlFor="mortgageTerm">Mortgage Term</label>
 				</div>
 				<div className="grid__item">
-					<span className="grid__item--header">{this.props.numberWithCommas(this.props.interestRate)}%</span>
+					<span className="grid__item--header">{this.props.interestRate}%</span>
 					<input 
 						type="range"
 						className="grid__item--range-slider"
