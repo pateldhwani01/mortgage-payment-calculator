@@ -1,4 +1,5 @@
 import React from 'react';
+import {HeaderFigures} from './HeaderFigures';
 import {CalculatorControls} from './CalculatorControls';
 import {PaymentGraph} from './PaymentGraph';
 import {PaymentTable} from './PaymentTable';
@@ -6,7 +7,6 @@ import {PaymentTable} from './PaymentTable';
 export class Calculator extends React.Component {
 	constructor(props) {
 		super(props);
-
 		this.updateValues = this.updateValues.bind(this);
 
 		this.state = {
@@ -23,45 +23,48 @@ export class Calculator extends React.Component {
 	}
 
 	updateValues(depositAmount, purchasingHousePrice, mortgageTerm, interestRate) {
-		let amountToBorrow = purchasingHousePrice - depositAmount;
-		let monthlyPayment = ((interestRate/100/12)*amountToBorrow)/(1-(Math.pow((1+(interestRate/100/12)),((0-mortgageTerm)*12))));
-		let totalRepaid = monthlyPayment * 12 * mortgageTerm;
-		let totalInterestPaid = totalRepaid - amountToBorrow;
 
-		//before^
+		//Set initial values for the whole mortgage term
+		const amountToBorrow = purchasingHousePrice - depositAmount;
+		const monthlyPayment = ((interestRate / 100 / 12)*amountToBorrow) / (1 - (Math.pow(( 1+ (interestRate / 100 / 12)),((0 - mortgageTerm) * 12))));
+		const totalRepaid = monthlyPayment * 12 * mortgageTerm;
+		const totalInterestPaid = totalRepaid - amountToBorrow;
 
-		let interestPaid = 0;
-		let capitalRepaid = 0;
-		let year = 0;
-		let yearInterestPaid = 0;
+		//Set initial values for loop to calculate yearly figures
 		let yearDataObject = [];
-		let outstandingBalance = this.state.amountToBorrow;
-		console.log('amountToBorrow: ' + amountToBorrow);
+		let outstandingBalance = amountToBorrow;
 
-		for(let i = 1; i <= mortgageTerm * 12; i++) {
+		//Loop each year of the mortgage term
+		for(let i = 1; i <= mortgageTerm; i++) {
 
-			interestPaid = outstandingBalance * this.state.interestRate / 100 / 12;
-			outstandingBalance = outstandingBalance - (monthlyPayment - interestPaid);
-			capitalRepaid = capitalRepaid + (monthlyPayment - interestPaid);
+			let monthInterestPaid = 0;
+			let interestPaidMonthlyToYearlyIncrementer = 0;
+			let monthCapitalPaid = 0;
+			let monthlyCapitalRepaidToYearlyIncrementer = 0;
+			
 
-			yearInterestPaid = yearInterestPaid + interestPaid;
+			//loop each month of the year as interest is calculated monthly
+			for (let j = 0; j < 12; j++) {
+				monthInterestPaid = outstandingBalance * interestRate / 100 / 12;
+				interestPaidMonthlyToYearlyIncrementer = interestPaidMonthlyToYearlyIncrementer + monthInterestPaid;
+				monthCapitalPaid = monthlyPayment - monthInterestPaid;
+				monthlyCapitalRepaidToYearlyIncrementer = monthlyCapitalRepaidToYearlyIncrementer + monthCapitalPaid;
+				outstandingBalance = outstandingBalance - monthCapitalPaid;
+			}
 
-			if (i % 12 === 0) {
-				year++;
-				yearDataObject.push({
-					year: year,
-					outstandingBalance: outstandingBalance,
-					interestPaid: interestPaid,
-					capitalRepaid: capitalRepaid
-				});
-				yearInterestPaid = 0;
-				console.log('Year ' + year + ' Outstanding balance: ' + outstandingBalance)
-			}	
+			//There's always around £10 left at the end which forces the fraph to go into minus. This just rounds the last figure off at £0.00.
+			if (i === mortgageTerm) {
+				outstandingBalance = 0;
+			}
+
+			yearDataObject.push({
+				year: i,
+				outstandingBalance: outstandingBalance,
+				interestPaid: interestPaidMonthlyToYearlyIncrementer,
+				capitalRepaid: monthlyCapitalRepaidToYearlyIncrementer
+			});	
 		}
 
-
-
-		//after
 
 		this.setState({
 			depositAmount: depositAmount,
@@ -87,32 +90,13 @@ export class Calculator extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="grid__container">
-					<div className="grid__item">
-						<span className="grid__item--header">
-							£{this.numberWithCommas(parseInt(this.state.amountToBorrow))}
-						</span>
-						<div className="grid__item--label">Amount To Borrow</div>
-					</div>
-					<div className="grid__item">
-						<span className="grid__item--header">
-							£{this.numberWithCommas(parseInt(this.state.monthlyPayment))}
-						</span>
-						<div className="grid__item--label">Monthly Payment</div>
-					</div>
-					<div className="grid__item">
-						<span className="grid__item--header">
-							£{this.numberWithCommas(parseInt(this.state.totalRepaid))}
-						</span>
-						<div className="grid__item--label">Total Repaid</div>
-					</div>
-					<div className="grid__item">
-						<span className="grid__item--header">
-							£{this.numberWithCommas(parseInt(this.state.totalInterestPaid))}
-						</span>
-						<div className="grid__item--label">Total Interest Paid</div>
-					</div>
-				</div>
+				<HeaderFigures 
+					amountToBorrow={this.state.amountToBorrow}
+					monthlyPayment={this.state.monthlyPayment}
+					totalRepaid={this.state.totalRepaid}
+					totalInterestPaid={this.state.totalInterestPaid}
+					numberWithCommas={this.numberWithCommas}
+				/>
 				<CalculatorControls 
 					updateValues={this.updateValues} 
 					numberWithCommas={this.numberWithCommas}
@@ -126,13 +110,10 @@ export class Calculator extends React.Component {
 					yearlyPayments={this.state.yearlyPayments}
 				/>
 				<PaymentTable
-					mortgageTerm={this.state.mortgageTerm}
 					amountToBorrow={this.state.amountToBorrow}
-					interestRate={this.state.interestRate}
-					monthlyPayment={this.state.monthlyPayment}
 					numberWithCommas={this.numberWithCommas}
+					yearlyPayments={this.state.yearlyPayments}
 				/>
-
 			</div>
 		);
 	}

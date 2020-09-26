@@ -1,7 +1,7 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
 
-const data = {
+const graphData = {
   labels: [],
   datasets: [
     {
@@ -30,16 +30,16 @@ const data = {
 
 export class PaymentGraph extends React.Component {
 	render() {
-		data.labels = [];
-		data.datasets[0].data = [];
+		graphData.labels = [];
+		graphData.datasets[0].data = [];
   		for (let i = 0; i < this.props.mortgageTerm; i++) {
-			data.labels.push(i);
-			data.datasets[0].data.push(this.props.yearlyPayments[i].outstandingBalance);
+			graphData.labels.push(i+1);
+			graphData.datasets[0].data.push(this.props.yearlyPayments[i].outstandingBalance);
 		}
     	return (
     		<div className="graph-container">
     			<Line 
-    				data={data}
+    				data={graphData}
     			/>
     		</div>
     	)
