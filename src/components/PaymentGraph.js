@@ -77,11 +77,6 @@ const graphOption = {
              		return value.toLocaleString('en-GB', {style:'currency', currency:'GBP'});
            		}
          	}
-       	}],
-       	xAxes: [{
-        	ticks: {
-           		autoSkip: false
-         	}
        	}]
     },
     legend: {
