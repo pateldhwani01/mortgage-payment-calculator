@@ -77,7 +77,22 @@ const graphOption = {
              		return value.toLocaleString('en-GB', {style:'currency', currency:'GBP'});
            		}
          	}
+       	}],
+       	xAxes: [{
+        	ticks: {
+           		autoSkip: false
+         	}
        	}]
+    },
+    legend: {
+    	position: 'bottom'
+    },
+    tooltips: {
+    	callbacks: {
+        	label: function(tooltipItems, data, index) {
+            	return parseFloat(tooltipItems.value).toLocaleString('en-GB', {style:'currency', currency:'GBP'}) + ' ' + data.datasets[tooltipItems.datasetIndex].label;
+        	}
+    	}
     }
 }
 
@@ -105,12 +120,12 @@ export class PaymentGraph extends React.Component {
 		barGraphData.datasets[0].data = [];
 		barGraphData.datasets[1].data = [];
   		for(let i = 0; i <= this.props.mortgageTerm; i++) {
-			graphData.labels.push(i);
+			graphData.labels.push('Year '+ i);
 			graphData.datasets[0].data.push(this.props.yearlyPayments[i].outstandingBalance);
 			graphData.datasets[1].data.push(this.props.yearlyPayments[i].interestPaidToDate);
 			graphData.datasets[2].data.push(this.props.yearlyPayments[i].capitalRepaidToDate);
 			if (i > 0) { //Stops year 0 with no money paid from appearing on bar chart
-				barGraphData.labels.push(i);
+				barGraphData.labels.push('Year '+ i);
 				barGraphData.datasets[0].data.push(this.props.yearlyPayments[i].capitalRepaid);
 				barGraphData.datasets[1].data.push(this.props.yearlyPayments[i].interestPaid);
 			}

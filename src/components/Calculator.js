@@ -70,11 +70,11 @@ export class Calculator extends React.Component {
 
 			yearDataObject.push({
 				year: i,
-				outstandingBalance: outstandingBalance,
-				interestPaid: interestPaidMonthlyToYearlyIncrementer,
-				interestPaidToDate: interestPaidToDate,
-				capitalRepaid: monthlyCapitalRepaidToYearlyIncrementer,
-				capitalRepaidToDate: capitalRepaidToDate
+				outstandingBalance: parseFloat(outstandingBalance.toFixed(2)),
+				interestPaid: parseFloat(interestPaidMonthlyToYearlyIncrementer.toFixed(2)),
+				interestPaidToDate: parseFloat(interestPaidToDate.toFixed(2)),
+				capitalRepaid: parseFloat(monthlyCapitalRepaidToYearlyIncrementer.toFixed(2)),
+				capitalRepaidToDate: parseFloat(capitalRepaidToDate.toFixed(2))
 			});	
 		}
 
