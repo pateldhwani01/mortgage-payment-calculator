@@ -87,8 +87,8 @@ export class PaymentGraph extends React.Component {
 		graphData.datasets[0].data = [];
 		graphData.datasets[1].data = [];
 		graphData.datasets[2].data = [];
-  		for(let i = 0; i < this.props.mortgageTerm; i++) {
-			graphData.labels.push(i+1);
+  		for(let i = 0; i <= this.props.mortgageTerm; i++) {
+			graphData.labels.push(i);
 			graphData.datasets[0].data.push(this.props.yearlyPayments[i].outstandingBalance);
 			graphData.datasets[1].data.push(this.props.yearlyPayments[i].interestPaidToDate);
 			graphData.datasets[2].data.push(this.props.yearlyPayments[i].capitalRepaidToDate);
