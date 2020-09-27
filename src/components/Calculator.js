@@ -31,7 +31,14 @@ export class Calculator extends React.Component {
 		const totalInterestPaid = totalRepaid - amountToBorrow;
 
 		//Set initial values for loop to calculate yearly figures
-		let yearDataObject = [];
+		let yearDataObject = [{
+			year: 0,
+			outstandingBalance: amountToBorrow,
+			interestPaid: 0,
+			interestPaidToDate: 0,
+			capitalRepaid: 0,
+			capitalRepaidToDate: 0
+		}];
 		let outstandingBalance = amountToBorrow;
 		let interestPaidToDate = 0;
 		let capitalRepaidToDate = 0;

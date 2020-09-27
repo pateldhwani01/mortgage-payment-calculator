@@ -41,7 +41,17 @@ h1 {
   width: 25%;
   text-align: center;
 }
-
+.to-date-yearly-payment {
+  display: none;
+}
+@media (min-width: 575px) {
+  .to-date-yearly-payment {
+    display: table-cell;
+  }
+  .paymentsCalculatorTable td {
+    width: 16.6666666667%;
+  }
+}
 .graph-container {
   max-width: 800px;
   margin: auto;
