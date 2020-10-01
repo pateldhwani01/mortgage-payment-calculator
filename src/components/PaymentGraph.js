@@ -1,6 +1,5 @@
 import React from 'react';
-import {Line} from 'react-chartjs-2';
-import {Bar} from 'react-chartjs-2';
+import {Line, Bar} from 'react-chartjs-2';
 
 const graphData = {
   labels: [],
@@ -98,48 +97,46 @@ const barGraphData = {
         	data: []
     	},
     	{
-    		label: 'Interest Repaid',
+    		label: 'Interest Paid',
     		backgroundColor: 'rgba(249,31,116,0.4)',
         	data: []
     	}],
     	labels: []
 }
 
-export class PaymentGraph extends React.Component {
-	render() {
-		graphData.labels = [];
-		graphData.datasets[0].data = [];
-		graphData.datasets[1].data = [];
-		graphData.datasets[2].data = [];
-		barGraphData.labels = [];
-		barGraphData.datasets[0].data = [];
-		barGraphData.datasets[1].data = [];
-  		for(let i = 0; i <= this.props.mortgageTerm; i++) {
-			graphData.labels.push('Year '+ i);
-			graphData.datasets[0].data.push(this.props.yearlyPayments[i].outstandingBalance);
-			graphData.datasets[1].data.push(this.props.yearlyPayments[i].interestPaidToDate);
-			graphData.datasets[2].data.push(this.props.yearlyPayments[i].capitalRepaidToDate);
-			if (i > 0) { //Stops year 0 with no money paid from appearing on bar chart
-				barGraphData.labels.push('Year '+ i);
-				barGraphData.datasets[0].data.push(this.props.yearlyPayments[i].capitalRepaid);
-				barGraphData.datasets[1].data.push(this.props.yearlyPayments[i].interestPaid);
-			}
+export const PaymentGraph = props => {
+	graphData.labels = [];
+	graphData.datasets[0].data = [];
+	graphData.datasets[1].data = [];
+	graphData.datasets[2].data = [];
+	barGraphData.labels = [];
+	barGraphData.datasets[0].data = [];
+	barGraphData.datasets[1].data = [];
+  	for(let i = 0; i <= props.mortgageTerm; i++) {
+		graphData.labels.push('Year '+ i);
+		graphData.datasets[0].data.push(props.yearlyPayments[i].outstandingBalance);
+		graphData.datasets[1].data.push(props.yearlyPayments[i].interestPaidToDate);
+		graphData.datasets[2].data.push(props.yearlyPayments[i].capitalRepaidToDate);
+		if (i > 0) { //Stops year 0 with no money paid from appearing on bar chart
+			barGraphData.labels.push('Year '+ i);
+			barGraphData.datasets[0].data.push(props.yearlyPayments[i].capitalRepaid);
+			barGraphData.datasets[1].data.push(props.yearlyPayments[i].interestPaid);
 		}
-    	return(
-    		<div>
-    			<div className="graph-container">
-    				<Line 
-    					data={graphData}
-    					options={graphOption}
-    				/>
-    			</div>
-    			<div className="graph-container">
-    				<Bar 
-    					data={barGraphData}
-    					options={graphOption}
-    				/>
-    			</div>
+	}
+    return(
+    	<div>
+    		<div className="graph-container">
+    			<Line 
+    				data={graphData}
+    				options={graphOption}
+    			/>
     		</div>
-    	)
-  	}
+    		<div className="graph-container">
+    			<Bar 
+    				data={barGraphData}
+    				options={graphOption}
+    			/>
+    		</div>
+    	</div>
+    )
 }
