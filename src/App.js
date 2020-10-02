@@ -1,6 +1,9 @@
 import React from 'react';
 import {Calculator} from './components/Calculator';
 import './App.css';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-179516420-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 function App() {
   return (
