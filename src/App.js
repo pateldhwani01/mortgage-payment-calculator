@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Calculator} from './components/Calculator';
 import './App.css';
 import ReactGA from 'react-ga-gtm';
