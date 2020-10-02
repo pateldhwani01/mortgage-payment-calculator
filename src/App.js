@@ -1,19 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Calculator} from './components/Calculator';
 import './App.css';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-179516420-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
+
+export const initGA = () => {       
+    ReactGA.initialize('UA-179516420-1'); 
+} 
+
 
 function App() {
-  return (
-    <div className="App">
-      <header>
-        <h1>Mortgage Payment Calculator</h1>
-      </header>
-      <Calculator />
-    </div>
-  );
+	useEffect(() => { initGA(); }, []);
+	return (
+    	<div className="App">
+      		<header>
+        		<h1>Mortgage Payment Calculator</h1>
+      		</header>
+      		<Calculator />
+    	</div>
+  	);
 }
 
 export default App;
