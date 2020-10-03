@@ -46,7 +46,7 @@ const graphData = {
     	data: []
     },
     {
-    	label: 'Capital Repaid',
+    	label: 'Principal Repaid',
     	fill: false,
     	lineTension: 0.1,
     	backgroundColor: 'rgba(75,192,192,0.4)',
@@ -96,7 +96,7 @@ const graphOption = {
 
 const barGraphData = {
     	datasets: [{
-    		label: 'Capital Repaid',
+    		label: 'Principal Repaid',
     		backgroundColor: 'rgba(75,192,192,0.4)',
         	data: []
     	},
@@ -120,10 +120,10 @@ export const PaymentGraph = props => {
 		graphData.labels.push('Year '+ i);
 		graphData.datasets[0].data.push(props.yearlyPayments[i].outstandingBalance);
 		graphData.datasets[1].data.push(props.yearlyPayments[i].interestPaidToDate);
-		graphData.datasets[2].data.push(props.yearlyPayments[i].capitalRepaidToDate);
+		graphData.datasets[2].data.push(props.yearlyPayments[i].principalRepaidToDate);
 		if (i > 0) { //Stops year 0 with no money paid from appearing on bar chart
 			barGraphData.labels.push('Year '+ i);
-			barGraphData.datasets[0].data.push(props.yearlyPayments[i].capitalRepaid);
+			barGraphData.datasets[0].data.push(props.yearlyPayments[i].principalRepaid);
 			barGraphData.datasets[1].data.push(props.yearlyPayments[i].interestPaid);
 		}
 	}

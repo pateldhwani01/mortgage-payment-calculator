@@ -14,8 +14,8 @@ export const PaymentTable = props => {
 				<td>{props.yearlyPayments[i].year}</td>
 				<td>{props.yearlyPayments[i].interestPaid.toLocaleString('en-GB', localeOptions)}</td>
 				<td className="to-date-yearly-payment">{props.yearlyPayments[i].interestPaidToDate.toLocaleString('en-GB', localeOptions)}</td>
-				<td>{props.yearlyPayments[i].capitalRepaid.toLocaleString('en-GB', localeOptions)}</td>
-				<td className="to-date-yearly-payment">{props.yearlyPayments[i].capitalRepaidToDate.toLocaleString('en-GB', localeOptions)}</td>
+				<td>{props.yearlyPayments[i].principalRepaid.toLocaleString('en-GB', localeOptions)}</td>
+				<td className="to-date-yearly-payment">{props.yearlyPayments[i].principalRepaidToDate.toLocaleString('en-GB', localeOptions)}</td>
 				<td>{props.yearlyPayments[i].outstandingBalance.toLocaleString('en-GB', localeOptions)}</td>
 			</tr>
 		);
@@ -28,8 +28,8 @@ export const PaymentTable = props => {
 					<th>Year</th>
 					<th>Year Interest Paid</th>
 					<th className="to-date-yearly-payment">Total Interest Paid</th>
-					<th>Year Capital Repaid</th>
-					<th className="to-date-yearly-payment">Total Capital Repaid</th>
+					<th>Year Principal Repaid</th>
+					<th className="to-date-yearly-payment">Total Principal Repaid</th>
 					<th>Mortgage Balance</th>
 				</tr>
 			</thead>
