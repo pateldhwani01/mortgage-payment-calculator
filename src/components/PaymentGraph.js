@@ -73,7 +73,11 @@ const graphOption = {
        	yAxes: [{
         	ticks: {
            		callback: function(value, index, values) {
-             		return value.toLocaleString('en-GB', {style:'currency', currency:'GBP'});
+           			if (value === 0) {
+           				return value;
+           			}
+           			return '£' + (value / 1000) + 'K';
+             		
            		}
          	}
        	}]
