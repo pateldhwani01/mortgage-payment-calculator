@@ -1,4 +1,8 @@
+<img src="/logo.svg" width="200">
+
 <h1>A Mortgage Payment Calculator built with React.js & Chart.js</h1>
+
+<p>Live demo here: <a href="https://mortgage-payment-calculator.netlify.app/">https://mortgage-payment-calculator.netlify.app</a></p>
 
 <p>This is my first project using React.</p>
 <p>I'm in the middle of buying and selling a home and wanted an interactive tool to show me the finances over the term of the mortgage.</p>
@@ -14,6 +18,9 @@
 - Stateful components being updated by their stateless child components
 - Create React App
 - How much money the banks make
+- The power of compound interest
+
+> *"Compound interest is the eighth wonder of the world. He who understands it, earns it ... he who doesn't ... pays it."* - Albert Einstein
 
 
 ## Available Scripts
