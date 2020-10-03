@@ -1,4 +1,4 @@
-<h1>A Mortgage Payment Calculator built wkith React.js & Chart.js</h1>
+<h1>A Mortgage Payment Calculator built with React.js & Chart.js</h1>
 
 <p>This is my first project using React.</p>
 <p>I'm in the middle of buying and selling a home and wanted an interactive tool to show me the finances over the term of the mortgage.</p>
