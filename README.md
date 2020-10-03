@@ -1,4 +1,4 @@
-<img src="/public/logo.svg" width="200">
+<img src="/public/logo.svg" width="100">
 
 <h1>A Mortgage Payment Calculator built with React.js & Chart.js</h1>
 
