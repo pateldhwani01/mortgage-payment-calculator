@@ -13,7 +13,7 @@ export const Calculator = () => {
 
 	//Set initial values for the whole mortgage term
 	const amountToBorrow = purchasingHousePrice - depositAmount;
-	const monthlyPayment = ((interestRate / 100 / 12)*amountToBorrow) / (1 - (Math.pow(( 1+ (interestRate / 100 / 12)),((0 - mortgageTerm) * 12))));
+	const monthlyPayment = ((interestRate / 100 / 12) * amountToBorrow) / (1 - (Math.pow((1 + (interestRate / 100 / 12)),((0 - mortgageTerm) * 12))));
 	const totalRepaid = monthlyPayment * 12 * mortgageTerm;
 	const totalInterestPaid = totalRepaid - amountToBorrow;
 
