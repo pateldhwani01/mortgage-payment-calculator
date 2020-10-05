@@ -10,7 +10,6 @@ export const Calculator = () => {
 	const [amountToBorrow, setAmountToBorrow] = useState(213000);
 	const [mortgageTerm, setMortgageTerm] = useState(25);
 	const [interestRate, setInterestRate] = useState(1.8);
-
 	const [monthlyPayment, setMonthlyPayment] = useState(882);
 	const [totalRepaid, setTotalRepaid] = useState(264663);
 	const [totalInterestPaid, setTotalInterestPaid] = useState(51663);
@@ -94,14 +93,14 @@ export const Calculator = () => {
 				totalInterestPaid={totalInterestPaid}
 			/>
 			<CalculatorControls 
-				handleMortgageDataChange={handleMortgageDataChange} 
-				depositAmount={depositAmount}
-				purchasingHousePrice={purchasingHousePrice}
-				mortgageTerm={mortgageTerm}
-				interestRate={interestRate}
 				depositAmount={depositAmount}
 				setDepositAmount={setDepositAmount}
-			
+				purchasingHousePrice={purchasingHousePrice}
+				setPurchasingHousePrice={setPurchasingHousePrice}
+				mortgageTerm={mortgageTerm}
+				setMortgageTerm={setMortgageTerm}
+				interestRate={interestRate}
+				setInterestRate={setInterestRate}
 			/>
 			<PaymentGraph
 				mortgageTerm={mortgageTerm}

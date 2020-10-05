@@ -19,12 +19,10 @@ export const CalculatorControls = props => {
 					min="50000" 
 					max="750000" 
 					step="1000" 
-					defaultValue="285000" 
-					onChange={() => props.handleMortgageDataChange(
-						parseFloat(document.getElementById('depositAmount').value), 
-						parseFloat(document.getElementById('purchasingHousePrice').value), 
-						parseFloat(document.getElementById('mortgageTerm').value), 
-						parseFloat(document.getElementById('interestRate').value))} />
+					value={props.purchasingHousePrice} 
+					onChange={(event) => 
+						props.setPurchasingHousePrice(event.target.value)
+					} />
 				<label className="grid__item--label" htmlFor="purchasingHousePrice">Purchasing House Price</label>
 			</div>
 			<div className="grid__item">
@@ -37,9 +35,9 @@ export const CalculatorControls = props => {
 					max="150000" 
 					step="1000" 
 					value={props.depositAmount}
-         			 onChange={(event) =>
+         			onChange={(event) =>
 						props.setDepositAmount(event.target.value)
-         			 } />
+         			} />
 				<label className="grid__item--label" htmlFor="points">Deposit</label>
 			</div>
 			<div className="grid__item">
@@ -51,12 +49,10 @@ export const CalculatorControls = props => {
 					min="5" 
 					max="35" 
 					step="1" 
-					defaultValue="25" 
-					onChange={() => props.handleMortgageDataChange(
-						parseFloat(document.getElementById('depositAmount').value), 
-						parseFloat(document.getElementById('purchasingHousePrice').value), 
-						parseFloat(document.getElementById('mortgageTerm').value), 
-						parseFloat(document.getElementById('interestRate').value))} />
+					value={props.mortgageTerm} 
+					onChange={(event) => 
+						props.setMortgageTerm(event.target.value)
+					} />
 				<label className="grid__item--label" htmlFor="mortgageTerm">Mortgage Term</label>
 			</div>
 			<div className="grid__item">
@@ -68,12 +64,10 @@ export const CalculatorControls = props => {
 					min="0.1" 
 					max="8" 
 					step="0.1" 
-					defaultValue="1.8" 
-					onChange={() => props.handleMortgageDataChange(
-						parseFloat(document.getElementById('depositAmount').value), 
-						parseFloat(document.getElementById('purchasingHousePrice').value), 
-						parseFloat(document.getElementById('mortgageTerm').value), 
-						parseFloat(document.getElementById('interestRate').value))} />
+					value={props.interestRate} 
+					onChange={(event) => 
+						props.setInterestRate(event.target.value)
+					} />
 				<label className="grid__item--label" htmlFor="interestRate">Interest Rate</label>
 			</div>
 		</div>
