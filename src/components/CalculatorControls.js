@@ -36,12 +36,10 @@ export const CalculatorControls = props => {
 					min="1000" 
 					max="150000" 
 					step="1000" 
-					defaultValue="72000" 
-					onChange={() => props.handleMortgageDataChange(
-						parseFloat(document.getElementById('depositAmount').value), 
-						parseFloat(document.getElementById('purchasingHousePrice').value), 
-						parseFloat(document.getElementById('mortgageTerm').value), 
-						parseFloat(document.getElementById('interestRate').value))} />
+					value={props.depositAmount}
+         			 onChange={(event) =>
+						props.setDepositAmount(event.target.value)
+         			 } />
 				<label className="grid__item--label" htmlFor="points">Deposit</label>
 			</div>
 			<div className="grid__item">

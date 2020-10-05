@@ -10,6 +10,7 @@ export const Calculator = () => {
 	const [amountToBorrow, setAmountToBorrow] = useState(213000);
 	const [mortgageTerm, setMortgageTerm] = useState(25);
 	const [interestRate, setInterestRate] = useState(1.8);
+
 	const [monthlyPayment, setMonthlyPayment] = useState(882);
 	const [totalRepaid, setTotalRepaid] = useState(264663);
 	const [totalInterestPaid, setTotalInterestPaid] = useState(51663);
@@ -70,8 +71,6 @@ export const Calculator = () => {
 				principalRepaidToDate: parseFloat(principalRepaidToDate.toFixed(2))
 			});	
 		}
-
-		setDepositAmount(depositAmount);
 		setPurchasingHousePrice(purchasingHousePrice);
 		setAmountToBorrow(amountToBorrow);
 		setMortgageTerm(mortgageTerm);
@@ -80,7 +79,6 @@ export const Calculator = () => {
 		setTotalRepaid(totalRepaid);
 		setTotalInterestPaid(totalInterestPaid);
 		setYearlyPayments(yearDataObject);
-
 	}
 
 	useEffect(() => {
@@ -101,6 +99,9 @@ export const Calculator = () => {
 				purchasingHousePrice={purchasingHousePrice}
 				mortgageTerm={mortgageTerm}
 				interestRate={interestRate}
+				depositAmount={depositAmount}
+				setDepositAmount={setDepositAmount}
+			
 			/>
 			<PaymentGraph
 				mortgageTerm={mortgageTerm}
