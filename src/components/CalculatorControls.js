@@ -11,7 +11,7 @@ export const CalculatorControls = props => {
 	return(
 		<div className="grid__container">			
 			<div className="grid__item">
-				<span className="grid__item--header">{props.purchasingHousePrice.toLocaleString('en-GB', localeOptions)}</span>
+				<span className="grid__item--header">{parseInt(props.purchasingHousePrice).toLocaleString('en-GB', localeOptions)}</span>
 				<input 
 					type="range"
 					className="grid__item--range-slider"
@@ -26,7 +26,7 @@ export const CalculatorControls = props => {
 				<label className="grid__item--label" htmlFor="purchasingHousePrice">Purchasing House Price</label>
 			</div>
 			<div className="grid__item">
-				<span className="grid__item--header">{props.depositAmount.toLocaleString('en-GB', localeOptions)}</span>
+				<span className="grid__item--header">{parseInt(props.depositAmount).toLocaleString('en-GB', localeOptions)}</span>
 				<input 
 					type="range"
 					className="grid__item--range-slider"
