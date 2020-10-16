@@ -34,6 +34,18 @@ export const HeaderFigures = props => {
 				</span>
 				<div className="grid__item--label">Total Interest Paid</div>
 			</div>
+			<div className="grid__item">
+				<span className="grid__item--header">
+					{(props.depositAmount / props.purchasingHousePrice * 100).toFixed(1)}%
+				</span>
+				<div className="grid__item--label">Deposit</div>
+			</div>
+			<div className="grid__item">
+				<span className="grid__item--header">
+					{(props.amountToBorrow / props.purchasingHousePrice * 100).toFixed(1)}%
+				</span>
+				<div className="grid__item--label">Loan To Value</div>
+			</div>
 		</div>
 	)
 }

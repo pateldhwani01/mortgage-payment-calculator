@@ -26,6 +26,8 @@ export const Calculator = () => {
 				monthlyPayment={monthlyPayment}
 				totalRepaid={totalRepaid}
 				totalInterestPaid={totalInterestPaid}
+				depositAmount={depositAmount}
+				purchasingHousePrice={purchasingHousePrice}
 			/>
 			<CalculatorControls 
 				depositAmount={depositAmount}

@@ -4,19 +4,14 @@
 
 <p>Live demo here: <a href="https://mortgage-payment-calculator.netlify.app/">https://mortgage-payment-calculator.netlify.app</a></p>
 
-<p>This is my first project using React.</p>
 <p>I'm in the middle of buying and selling a home and wanted an interactive tool to show me the finances over the term of the mortgage.</p>
 
 <h2>Things I've learned</h2>
 
-- React class components
-- React component lifecycle methods
 - Functional components
 - React hooks with functional components
   - useState()
   - useEffect()
-- Stateful components being updated by their stateless child components
-- Create React App
 - How much money the banks make
 - The power of compound interest
 
